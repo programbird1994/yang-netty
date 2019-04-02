@@ -9,7 +9,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 import java.net.InetSocketAddress;
 
-public class EchoClient {
+public class EchoClient implements Runnable {
 
     private final String host;
     private final int port;
@@ -22,10 +22,10 @@ public class EchoClient {
     public void start() throws InterruptedException {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
-            io.netty.bootstrap.Bootstrap b =new io.netty.bootstrap.Bootstrap();
+            io.netty.bootstrap.Bootstrap b = new io.netty.bootstrap.Bootstrap();
             b.group(group)
                     .channel(NioSocketChannel.class)
-                    .remoteAddress(new InetSocketAddress(host,port))
+                    .remoteAddress(new InetSocketAddress(host, port))
                     .handler(new ChannelInitializer<SocketChannel>() {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(
@@ -41,12 +41,26 @@ public class EchoClient {
         }
     }
 
+    public void mockWith10Threads() {
+        for (int i = 0; i < 10; i++) {
+            Thread thread = new Thread(this, "thread-" + i);
+            thread.start();
+        }
+    }
+
     public static void main(String[] args) throws InterruptedException {
         String host = args[0];
-        int port =Integer.parseInt(args[1]);
-        for (int i = 0; i < 10; i++) {
-            new EchoClient(host,port).start();
-        }
+        int port = Integer.parseInt(args[1]);
+        EchoClient echoClient = new EchoClient(host, port);
+        echoClient.start();
+    }
 
+    @Override
+    public void run() {
+        try {
+            this.start();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

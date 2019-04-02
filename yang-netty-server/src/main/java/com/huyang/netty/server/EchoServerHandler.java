@@ -14,7 +14,7 @@ import java.time.LocalTime;
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-       // System.out.println();
+        System.out.println("EchoServerHandler - channelRead :  channelRead start to run");
         ByteBuf in = (ByteBuf) msg;
         System.out.println(LocalTime.now().toString()+"server received: "+in.toString(CharsetUtil.UTF_8));
         ctx.write(in);
@@ -22,6 +22,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("EchoServerHandler - channelReadComplete :  channelReadComplete start to run");
         ctx.writeAndFlush(Unpooled.EMPTY_BUFFER)
         .addListener(ChannelFutureListener.CLOSE);
     }

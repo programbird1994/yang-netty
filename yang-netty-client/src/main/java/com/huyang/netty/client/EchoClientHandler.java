@@ -15,13 +15,13 @@ import java.util.Date;
 public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println(LocalTime.now().toString()+"clent channel actived");
-        ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks",CharsetUtil.UTF_8));
+        System.out.println(LocalTime.now().toString()+Thread.currentThread().getName()+"clent channel actived");
+        ctx.writeAndFlush(Unpooled.copiedBuffer(Thread.currentThread().getName()+"Netty rocks",CharsetUtil.UTF_8));
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
-        System.out.println(LocalTime.now().toString()+"client received: "+msg.toString(CharsetUtil.UTF_8));
+        System.out.println(LocalTime.now().toString()+Thread.currentThread().getName()+"client received: "+msg.toString(CharsetUtil.UTF_8));
     }
 
     @Override

@@ -36,8 +36,11 @@ public class EchoServer {
                             ch.pipeline().addLast(echoServerHandler);
                         }
                     });
+            System.out.println("1");
             ChannelFuture f = b.bind().sync();
+            System.out.println("2");
             f.channel().closeFuture().sync();
+            System.out.println("3");
         } finally {
             eventLoopGroup.shutdownGracefully().sync();
         }
