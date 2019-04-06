@@ -8,6 +8,9 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 import java.net.InetSocketAddress;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
 public class DiyClient {
 
@@ -43,7 +46,10 @@ public class DiyClient {
 
     public static void main(String[] args) throws InterruptedException {
         DiyClient diyClient = new DiyClient("localhost", 9999);
-        diyClient.connect("Huyang test");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter =DateTimeFormatter.ofPattern("yyyyMMddhhmmss");
+        String date = localDateTime.format(dateTimeFormatter);
+        diyClient.connect(date+"Netty magic");
     }
 
 }

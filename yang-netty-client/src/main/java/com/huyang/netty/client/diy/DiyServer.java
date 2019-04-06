@@ -19,8 +19,7 @@ public class DiyServer {
         ChannelFuture channelFuture= null;
         try {
             channelFuture = serverBootstrap.group(group).channel(NioServerSocketChannel.class).childHandler(new DIyServerInboundHandler()).bind(this.port).sync();
-            channelFuture.channel().closeFuture().sync();
-            System.out.println("DIy server successfully at port:"+this.port);
+            System.out.println("DIY server successfully at port:"+this.port);
         } catch (InterruptedException e) {
             group.shutdownGracefully();
             e.printStackTrace();
