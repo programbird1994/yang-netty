@@ -3,6 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.huyang.netty</groupId>
     <artifactId>yang-netty</artifactId>
     <packaging>pom</packaging>
@@ -22,9 +23,9 @@
     <modules>
         <module>yang-netty-server</module>
         <module>yang-netty-client</module>
+        <module>yang-netty-application</module>
     </modules>
-    <name>AppFuse Core Application</name>
-    <url>http://www.mycompany.com</url>
+    <name>yang-netty</name>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
@@ -40,6 +41,9 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+
+
 
     </dependencies>
 
