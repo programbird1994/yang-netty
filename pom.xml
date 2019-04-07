@@ -24,6 +24,7 @@
         <module>yang-netty-server</module>
         <module>yang-netty-client</module>
         <module>yang-netty-application</module>
+        <module>yang-netty-common</module>
     </modules>
     <name>yang-netty</name>
 

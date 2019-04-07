@@ -44,12 +44,6 @@ public class DiyClient {
         group.shutdownGracefully().sync();
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        DiyClient diyClient = new DiyClient("localhost", 9999);
-        LocalDateTime localDateTime = LocalDateTime.now();
-        DateTimeFormatter dateTimeFormatter =DateTimeFormatter.ofPattern("yyyyMMddhhmmss");
-        String date = localDateTime.format(dateTimeFormatter);
-        diyClient.connect(date+"Netty magic");
-    }
+
 
 }

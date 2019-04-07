@@ -1,4 +1,4 @@
-package com.huyang.netty.client.diy;
+package com.huyang.netty.server.diy;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -27,10 +27,6 @@ public class DiyServer {
         channelFuture.awaitUninterruptibly();
     }
 
-    public static void  main(String [] args) {
-        DiyServer diyServer= new DiyServer(9999);
-        diyServer.start();
-    }
 
 
 

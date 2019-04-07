@@ -12,6 +12,12 @@
     <artifactId>yang-netty-application</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.huyang.netty</groupId>
+            <artifactId>yang-netty-server</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.huyang.netty</groupId>
             <artifactId>yang-netty-client</artifactId>

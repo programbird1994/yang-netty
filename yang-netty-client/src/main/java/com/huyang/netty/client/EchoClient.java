@@ -33,8 +33,7 @@ public class EchoClient implements Runnable {
                             );
                         }
                     });
-            ChannelFuture f = b.connect().sync();
-            f.channel().closeFuture().sync();
+          b.connect().sync();
 
         } finally {
             group.shutdownGracefully().sync();

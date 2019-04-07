@@ -11,5 +11,14 @@
 
     <artifactId>yang-netty-client</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.huyang.netty</groupId>
+            <artifactId>yang-netty-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+
 
 </project>
